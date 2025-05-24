@@ -1,8 +1,10 @@
 {
   "name": "refund_api",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {},
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
   "author": "Bruno Oliveira",
   "license": "ISC",
   "description": "API de solicitação de reembolso",
