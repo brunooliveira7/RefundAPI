@@ -1,8 +1,16 @@
 import { Request, Response } from "express";
+import {z} from "zod";
 
 class SessionsController {
   async create(request: Request, response: Response) {
-    response.json({ message: "session created" });
+    const schema = z.object({
+      email: z.string().email({message: "Invalid email"}),
+      password: z.string(),
+    });
+
+    const { email, password } = schema.parse(request.body);
+
+    response.json({ email, password });
   }
 }
 
