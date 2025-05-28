@@ -90,7 +90,7 @@ class RefundsController {
     });
   }
 
-  //solicitar um item específico
+  //solicitar um item específico de um usuário
   async show(request: Request, response: Response) {
     const paramsSchema = z.object({
       id: z.string().uuid(),
