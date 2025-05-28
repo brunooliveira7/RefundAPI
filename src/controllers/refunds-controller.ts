@@ -89,6 +89,22 @@ class RefundsController {
       },
     });
   }
+
+  //solicitar um item específico
+  async show(request: Request, response: Response) {
+    const paramsSchema = z.object({
+      id: z.string().uuid(),
+    });
+
+    const { id } = paramsSchema.parse(request.params);
+
+    const refund = await prisma.refund.findFirst({
+      where: { id },
+      include: { user: true },
+    });
+
+    response.json({ refund });
+  }
 }
 
 export { RefundsController };
