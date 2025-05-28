@@ -7,7 +7,7 @@ const TMP_FOLDER = path.resolve(__dirname, "..", "..", "tmp");
 ///cria uma pasta uploads - arquivo final manipulado
 const UPLOADS_FOLDER = path.resolve(TMP_FOLDER, "uploads");
 
-const MAX_FILE_SIZE = 1024 * 1024 * 10; // 3MB
+const MAX_FILE_SIZE = 1024 * 1024 * 3; // 3MB
 const ACCEPTED_FILE_TYPES = ["image/png", "image/jpg", "image/jpeg"];
 
 //middleware
@@ -23,7 +23,7 @@ const MULTER = {
   }),
 };
 
-export {
+export default{
   TMP_FOLDER,
   UPLOADS_FOLDER,
   MAX_FILE_SIZE,
