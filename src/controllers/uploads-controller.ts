@@ -1,10 +1,13 @@
 import { Response, Request } from "express";
-import { z } from "zod";
+import z, { ZodError } from "zod";
 import uploadConfig from "@/configs/upload";
+import { DiskStorage } from "@/providers/disk-storage";
 import { AppError } from "@/utils/AppError";
 
 class UploadsController {
   async create(request: Request, response: Response) {
+    const diskStorage = new DiskStorage();
+
     try {
       const fileSchema = z
         .object({
@@ -25,11 +28,20 @@ class UploadsController {
         })
         .passthrough();
 
-        const {file} = fileSchema.parse(request.file);
+      const file = fileSchema.parse(request.file);
+      const fileName = await diskStorage.saveFile(file.filename);
 
-      response.json({message: "File sent successfully"});
+      response.json({ fileName });
     } catch (error) {
-      throw new AppError("Erro ao fazer upload de arquivo");
+      if (error instanceof ZodError) {
+        if (request.file) {
+         await diskStorage.deleteFile(request.file.filename, "tmp");
+        };
+
+        throw new AppError(error.issues[0].message);
+      }
+
+      throw error;
     }
   }
 }
