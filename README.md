@@ -68,6 +68,3 @@ Para garantir respostas claras e organizadas, a API utiliza:
 A API expõe arquivos públicos através da rota `/uploads`, utilizando o `app.use()` do Express para servir arquivos estáticos.
 
 Ao fazer o upload de um comprovante (formato `.jpg`, `.png`, etc.), o backend salva o arquivo em uma pasta pública e retorna a URL de acesso, permitindo a visualização direta em navegador ou consumo pelo front-end.
-
-**Exemplo de URL de acesso ao comprovante:**
-
