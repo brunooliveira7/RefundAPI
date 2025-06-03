@@ -72,5 +72,5 @@ Ao fazer o upload de um comprovante (formato `.jpg`, `.png`, etc.), o backend sa
 ---
 
 <p align="center">
-  <img alt="API Restaurant" src="">
+  <img alt="API Restaurant" src="https://github.com/brunooliveira7/RefundAPI/blob/main/assets/RefundApi.png">
 </p>
